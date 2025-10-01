@@ -2,10 +2,10 @@
 
 ## Informações Institucionais
 
-**Instituição:** [Nome da Instituição]  
+**Instituição:** Pontificia Universidade do Paraná (PUC-PR)  
 **Ano:** 2025  
-**Disciplina:** [Nome da Disciplina]  
-**Professor:** [Nome do Professor]
+**Disciplina:** Linguagem Formal de Compiladores
+**Professor:** Franl de Alcantara
 
 **Desenvolvedor:** Guilherme Knapik - kingnapik
 
@@ -21,7 +21,7 @@ Este projeto implementa um **analisador sintático descendente recursivo LL(1)**
 - Suporte a expressões aritméticas em RPN
 - Operadores: `+`, `-`, `*`, `/` (divisão inteira), `|` (divisão real), `%`, `^`
 - Operadores de comparação: `>`, `<`, `>=`, `<=`, `==`, `!=`
-- Estruturas de controle: `IF` e `FOR`
+- Estruturas de controle e repetição: `IF` e `FOR`
 - Comandos especiais: `RES` (resultados anteriores) e variáveis de memória
 - Geração de árvores sintáticas em HTML
 - Análise linha por linha com tratamento de erros
@@ -37,8 +37,7 @@ Este projeto implementa um **analisador sintático descendente recursivo LL(1)**
 ├── parser.h/cpp       # Implementação do parser LL(1)
 ├── arvore.h/cpp       # Estruturas de árvore e geração HTML
 ├── leitor.h/cpp       # Leitura de arquivos de tokens
-├── Makefile           # Compilação automática
-├── compile.sh         # Script de compilação alternativo
+├── compile.bat        # Compilação automática
 ├── teste1.txt         # Arquivo de teste 1
 ├── teste2.txt         # Arquivo de teste 2
 ├── teste3.txt         # Arquivo de teste 3
@@ -95,24 +94,16 @@ A linguagem utiliza **notação polonesa reversa (RPN)**, onde operadores aparec
 - `valor_verdadeiro`: Valor retornado se condição for verdadeira
 - `valor_falso`: Valor retornado se condição for falsa
 
-**Exemplos:**
-```
-( ( 5 3 > ) ( 10 ) ( 0 ) IF )           // Retorna 10 (5 > 3 é verdadeiro)
-( ( A 50 < ) ( A 2 * ) ( A 2 / ) IF )  // Dobra A se menor que 50, senão divide por 2
-```
-
 #### FOR - Laço de Repetição
 
 **Sintaxe:**
 ```
-( contador corpo FOR )
+( condição corpo FOR )
 ```
 
 **Descrição:**
-- `contador`: Número de iterações (inteiro não-negativo)
+- `condição`: Condição que define o numero de execuções.
 - `corpo`: Expressão a ser executada
-
-**Nota:** Na implementação atual, FOR é reconhecido sintaticamente mas não executa iterações múltiplas na avaliação.
 
 ### Expressões Aninhadas
 
@@ -130,47 +121,19 @@ Expressões podem ser aninhadas sem limite:
 ### Requisitos
 
 - Compilador C++ com suporte a C++17 (g++ recomendado)
-- Make (opcional, mas recomendado)
 - Navegador web (para visualizar árvores e tabelas)
 
-### Método 1: Usando Makefile (Recomendado)
+### Método 1: Usando batch file (Recomendado)
 
 ```bash
 # Compilar
-make
+.\compile.bat
 
 # Executar com arquivo de teste
-./AnalisadorSintatico teste1.txt
-
-# Ou compilar e executar diretamente
-make test1
-make test2
-make test3
-
-# Limpar arquivos de build
-make clean
-
-# Limpar apenas arquivos de saída
-make clean-output
-
-# Ver ajuda
-make help
+.\AnalisadorSintatico teste1.txt
 ```
 
-### Método 2: Usando Script Bash
-
-```bash
-# Dar permissão de execução
-chmod +x compile.sh
-
-# Compilar
-./compile.sh
-
-# Executar
-./AnalisadorSintatico teste1.txt
-```
-
-### Método 3: Compilação Manual
+### Método 2: Compilação Manual
 
 ```bash
 # Compilar todos os arquivos objeto
