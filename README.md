@@ -284,7 +284,7 @@ Responsável por:
 
 **Funções principais:**
 ```cpp
-vector<vector<string>> lerTokensPorLinha(string arquivo);
+vector<vector<string>> lerTokens(string arquivo);
 ```
 
 ### main.cpp
@@ -355,19 +355,19 @@ Arquivo HTML gerado: arvore_linha_1.html
 
 ### Arquivos de Teste Incluídos
 
-1. **`teste1.txt`** (15 linhas)
+1. **`teste1.txt`**
    - Todas as operações aritméticas
    - Comparações básicas
    - IF e RES
    - Variáveis
 
-2. **`teste2.txt`** (16 linhas)
+2. **`teste2.txt`**
    - Operações com números reais
    - Todos os operadores de comparação
    - IF aninhado
    - Múltiplas variáveis
 
-3. **`teste3.txt`** (19 linhas)
+3. **`teste3.txt`**
    - Mistura de inteiros e reais
    - Casos de erro sintático (linhas 13-15)
    - Expressões complexas
@@ -375,15 +375,11 @@ Arquivo HTML gerado: arvore_linha_1.html
 ### Executando os Testes
 
 ```bash
-# Método 1: Usando Makefile
-make test1
-make test2
-make test3
+.\compile.bat
 
-# Método 2: Diretamente
-./AnalisadorSintatico teste1.txt
-./AnalisadorSintatico teste2.txt
-./AnalisadorSintatico teste3.txt
+.\AnalisadorSintatico teste1.txt
+.\AnalisadorSintatico teste2.txt
+.\AnalisadorSintatico teste3.txt
 ```
 
 ---
