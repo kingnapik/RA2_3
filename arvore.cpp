@@ -1,3 +1,7 @@
+// Integrantes do grupo (ordem alfabética):
+// Guilherme Knapik - kingnapik
+// Nome do grupo no Canvas: RA2 3
+
 #include "arvore.h"
 #include <iostream>
 #include <fstream>
@@ -190,4 +194,5 @@ void salvarArvoreMarkdown(NoArvore* raiz, int numeroLinha) { //salvando ela no m
     
     file.close();
     cout << "Arvore salva em: analise_gramatica.md" << endl;
+
 }
