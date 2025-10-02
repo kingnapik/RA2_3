@@ -1,3 +1,7 @@
+// Integrantes do grupo (ordem alfabética):
+// Guilherme Knapik - kingnapik
+// Nome do grupo no Canvas: RA2 3
+
 #include "gramatica.h"
 #include <iostream>
 #include <fstream>
@@ -481,4 +485,5 @@ Gramatica construirGramatica() { //gramatica hard coded
     cout << "}" << endl;
     
     return g;
+
 }
