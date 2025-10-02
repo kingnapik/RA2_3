@@ -1,3 +1,7 @@
+// Integrantes do grupo (ordem alfabética):
+// Guilherme Knapik - kingnapik
+// Nome do grupo no Canvas: RA2 3
+
 #include "leitor.h"
 #include <fstream>
 #include <sstream>
@@ -29,4 +33,5 @@ vector<vector<string>> lerTokens(string arquivo) {
     
     file.close();
     return linhasDeTokens;
+
 }
