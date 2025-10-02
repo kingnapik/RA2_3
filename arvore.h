@@ -1,3 +1,7 @@
+// Integrantes do grupo (ordem alfabética):
+// Guilherme Knapik - kingnapik
+// Nome do grupo no Canvas: RA2 3
+
 #ifndef ARVORE_H
 #define ARVORE_H
 
@@ -30,5 +34,6 @@ NoArvore* gerarArvore(Derivacao* derivacao);
 void imprimirArvore(NoArvore* no, int nivel = 0);
 void gerarHTML(NoArvore* raiz, int numeroLinha);
 void salvarArvoreMarkdown(NoArvore* raiz, int numeroLinha);
+
 
 #endif
