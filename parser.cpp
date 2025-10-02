@@ -7,7 +7,7 @@
 #include <vector>
 
 string mapearTokenParaTerminal(const string& token) {
-    if (!token.empty() && (isdigit(token[0]) || (token[0] == '-' && token.size() > 1))) {//numeros, inteiros com ponto ou negativos, todos associados a num
+    if (!token.empty() && (isdigit(token[0]) || (token[0] == '-' && token.size() > 1))) {//mapeia numeros para "num"
         return "num";
     }
     //operadores permanecem como sao
@@ -17,15 +17,15 @@ string mapearTokenParaTerminal(const string& token) {
         token == "<=" || token == "==" || token == "!=") {
         return token;
     }
-    //parenteses tambem, mantidos normal
+    //parenteses mantidos normal
     if (token == "(" || token == ")") {
         return token;
     }
-    //essencialmente, passando tokens especiais para minusculo porque sao terminais
+    //tokens especiais para minusculo porque sao terminais
     if (token == "RES") {return "res";}
     if (token == "IF") {return "if";}
     if (token == "FOR") {return "for";}
-    // pega qqr char ou sequencia de chars e passa par ser interpretada como variavel
+    // pega char ou sequencia de chars e interpreta como var
     if (!token.empty() && isupper(token[0])) {return "var";}
     
     return token;
@@ -52,22 +52,22 @@ Derivacao* parsear(const vector<string>& _tokens_, const Gramatica& gramatica) {
         return derivacao;
     }
     
-    struct ItemPilha {//setup
-        string simbolo;//simbolo da gramatica
+    struct ItemPilha {//criando a estrutura
+        string simbolo;
         NoArvore* no;
         ItemPilha(string s, NoArvore* n) : simbolo(s), no(n) {}
     };
     
     vector<ItemPilha> pilha;
-    //vvv cria um no que comeca com o simbolo inicial, o P
+    //cria um no que comeca com o simbolo inicial P
     derivacao->raiz = new NoArvore(gramatica.simboloInicial, false);
     pilha.push_back(ItemPilha(gramatica.simboloInicial, derivacao->raiz)); //e inicia o stack
     
     size_t indiceToken = 0;//guarda posicao atual
-    derivacao->passos.push_back(gramatica.simboloInicial);//comeca de verdade, primeiro paco na derivacao
+    derivacao->passos.push_back(gramatica.simboloInicial);//comeca o primeiro passo na derivacao
     
-    while (!pilha.empty()) {
-        ItemPilha topo = pilha.back();//pop da pilha
+    while (!pilha.empty()) {//enquanto tiver item
+        ItemPilha topo = pilha.back();//faz pop da pilha
         pilha.pop_back();
         
         string simboloTopo = topo.simbolo;
@@ -79,14 +79,14 @@ Derivacao* parsear(const vector<string>& _tokens_, const Gramatica& gramatica) {
         if (gramatica.terminais.count(simboloTopo) || simboloTopo == END_MARKER) {
             if (simboloTopo == terminalAtual) { //se o terminal da match com o input
                 if (simboloTopo != END_MARKER) {//atualiza no com valor do token
-                    noTopo->simbolo = tokenAtual;//ex: stack = [num] e o input = 5 4 + )
-                    noTopo->ehTerminal = true;//                                 ^
+                    noTopo->simbolo = tokenAtual;//ex: stack espera num e o input tem um 5
+                    noTopo->ehTerminal = true;
                     indiceToken++;
                 }
-            } else {//se nao ser match, deu erro. esperava-se outra coisa, levanta erro
+            } else {//se nao for match, deu erro. esperava-se outra coisa, levanta erro
                 derivacao->sucesso = false;
-                derivacao->mensagemErro = "Erro sintatico: esperado '" + simboloTopo + //ex: stack = [num] e input = + )
-                                          "' mas encontrado '" + tokenAtual + //                                     ^
+                derivacao->mensagemErro = "Erro sintatico: esperado '" + simboloTopo + //ex: stack espera num e o input tem um +
+                                          "' mas encontrado '" + tokenAtual +
                                           "' na posicao " + to_string(indiceToken);
                 return derivacao;
             }
@@ -134,7 +134,8 @@ Derivacao* parsear(const vector<string>& _tokens_, const Gramatica& gramatica) {
         return derivacao;
     }
     
-    derivacao->sucesso = true;//deu boa
+    derivacao->sucesso = true;
     return derivacao;
 
 }
+
