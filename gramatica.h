@@ -1,3 +1,7 @@
+// Integrantes do grupo (ordem alfabética):
+// Guilherme Knapik - kingnapik
+// Nome do grupo no Canvas: RA2 3
+
 #ifndef GRAMATICA_H
 #define GRAMATICA_H
 
@@ -28,5 +32,6 @@ struct Gramatica {
 // Funcoes principais
 Gramatica construirGramatica();
 void salvarAnaliseGramatica(const Gramatica& g);
+
 
 #endif
