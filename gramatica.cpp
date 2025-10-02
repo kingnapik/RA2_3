@@ -19,18 +19,18 @@ bool todosNullable(const Production& prod, const set<string>& nullable, const se
         }
     }
     return true;// valido e e nullable
-}//ex: " corpo' -> e corpo' " se "e" e "corpo'" sao nullable, entao e true, se nao forem, retorna false
+}
 
 void calcularNullable(Gramatica& g) {
     bool changed = true;
-    while (changed) { //olha ate nao ter mudancas
+    while (changed) { //ate nao ter mudancas
         changed = false;
         for (const auto& kv : g.regras) {
             const string& A = kv.first; //nome do n-terminal
             if (g.nullable.count(A)) continue; //se ja nullable, pula
             
             for (const auto& prod : kv.second) { //verifica producao
-                // 2 casos possiveis para nullable
+                //casos possiveis para nullable
                 if (prod.empty() || (prod.size() == 1 && prod[0] == EPSILON)) { //deriva direto para epsilon
                     g.nullable.insert(A);
                     changed = true;
@@ -55,7 +55,7 @@ set<string> firstOfSequence(const vector<string>& seq, const Gramatica& g) { //c
         if (g.terminais.count(sym)) {
             result.insert(sym); //add do terminal
             allNullableSoFar = false;
-            break; //e para
+            break;
         }
         //se for nao terminal
         if (g.naoTerminais.count(sym)) {
@@ -84,22 +84,22 @@ void calcularFirst(Gramatica& g) { //calculo do FIRST
     }
     
     bool changed = true;
-    while (changed) {//enquanto tiver trocando, nao e first, quando parar e o firts
+    while (changed) {//enquanto tiver trocando, nao e first
         changed = false;
         for (const auto& kv : g.regras) {
             const string& A = kv.first;//n-terminal
             for (const auto& prod : kv.second) {//para cada producao
                 for (size_t i = 0; i < prod.size(); ++i) {//para cada simbolo naquela producao
                     const string& Xi = prod[i];
-                    //caso 1: Xi e termina
+                    //Xi e terminal
                     if (g.terminais.count(Xi)) {
                         if (!g.first[A].count(Xi)) {
                             g.first[A].insert(Xi);
                             changed = true;
                         }
-                        break;//feito com essa producao
+                        break;
                     }
-                    //caso 2: se Xi e n-terminal
+                    //se Xi e n-terminal
                     if (g.naoTerminais.count(Xi)) {
                         for (const auto& s : g.first[Xi]) {//pega first do Xi menos epsilon
                             if (s != EPSILON) {
@@ -127,7 +127,7 @@ void calcularFirst(Gramatica& g) { //calculo do FIRST
 }
 
 void calcularFollow(Gramatica& g) {
-    for (const auto& A : g.naoTerminais) {//igual, inicia vazio
+    for (const auto& A : g.naoTerminais) {//inicia vazio
         g.follow[A] = {};
     }
     
@@ -487,3 +487,4 @@ Gramatica construirGramatica() { //gramatica hard coded
     return g;
 
 }
+
