@@ -1,3 +1,7 @@
+// Integrantes do grupo (ordem alfabética):
+// Guilherme Knapik - kingnapik
+// Nome do grupo no Canvas: RA2 3
+
 #include "parser.h"
 #include <cctype>
 #include <vector>
@@ -132,4 +136,5 @@ Derivacao* parsear(const vector<string>& _tokens_, const Gramatica& gramatica) {
     
     derivacao->sucesso = true;//deu boa
     return derivacao;
+
 }
