@@ -1,5 +1,6 @@
+// Integrantes do grupo (ordem alfabética):
 // Guilherme Knapik - kingnapik
-// Analisador Sintatico LL(1) - Fase 2
+// Nome do grupo no Canvas: RA2 3
 
 #include "gramatica.h"
 #include "parser.h"
@@ -111,4 +112,5 @@ int main(int argc, char* argv[]) {//verifica argumentos de entrada
     }
     
     return 0;
+
 }
