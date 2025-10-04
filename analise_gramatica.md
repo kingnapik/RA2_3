@@ -2,6 +2,7 @@
 
 ## Regras de Producao (EBNF)
 
+```
 P -> ( CORPO )
 
 CORPO -> E CORPO'
@@ -22,7 +23,7 @@ E_ESPECIAL -> var
            | for
 
 OP -> + | - | * | % | / | | | ^ | > | < | >= | <= | == | !=
-
+```
 
 ## Conjunto NULLABLE
 
@@ -89,6 +90,7 @@ P
         CORPO'
   ) (terminal)
 ```
+
 
 
 
