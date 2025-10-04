@@ -21,7 +21,7 @@ E_ESPECIAL -> var
            | if
            | for
 
-OP -> + | - | * | % | / | | | ^ | > | < | >= | <= | == | !=
+OP -> + | - | * | % | / |  |  | ^ | > | < | >= | <= | == | !=
 
 
 ## Conjunto NULLABLE
@@ -89,5 +89,6 @@ P
         CORPO'
   ) (terminal)
 ```
+
 
 
