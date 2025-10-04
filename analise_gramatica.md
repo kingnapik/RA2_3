@@ -69,6 +69,7 @@ FOLLOW(OP) = { != % ( ) * + - / < <= == > >= ^ for if num res var | }
 
 ## Tabela de Analise LL(1)
 
+```
 | Nao-Terminal | != | % | ( | ) | * | + | - | / | < | <= | == | > | >= | ^ | for | if | num | res | var | | | $ |
 |--------------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|
 | P |  |  | P -> ( CORPO ) |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
@@ -78,6 +79,7 @@ FOLLOW(OP) = { != % ( ) * + - / < <= == > >= ^ for if num res var | }
 | E_ARITIMETICO |  |  | E_ARITIMETICO -> P |  |  |  |  |  |  |  |  |  |  |  |  |  | E_ARITIMETICO -> num |  |  |  |  |
 | E_ESPECIAL |  |  |  |  |  |  |  |  |  |  |  |  |  |  | E_ESPECIAL -> for | E_ESPECIAL -> if |  | E_ESPECIAL -> res | E_ESPECIAL -> var |  |  |
 | OP | OP -> != | OP -> % |  |  | OP -> * | OP -> + | OP -> - | OP -> / | OP -> < | OP -> <= | OP -> == | OP -> > | OP -> >= | OP -> ^ |  |  |  |  |  | OP -> | |  |
+```
 
 ---
 *Nota: A arvore sintatica da ultima execucao sera adicionada ao final deste arquivo.*
@@ -102,6 +104,7 @@ P
         CORPO'
   ) (terminal)
 ```
+
 
 
 
